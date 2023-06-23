@@ -22,8 +22,6 @@
           <li><a href="index_3.html">멘토 등록</a></li>
           <li>|</li>
           <li><a href="index_4.html">멘티 등록</a></li>
-          <li>|</li>
-          <li><a href="index_1.html">게시판</a></li>
         </ul>
       </nav>
   </header>
@@ -73,9 +71,9 @@
       };
 
       // 로컬 스토리지에 게시글 저장
-      var messages = JSON.parse(localStorage.getItem('messages') || '[]');
-      messages.push(newMessage);
-      localStorage.setItem('messages', JSON.stringify(messages));
+      var mento_messages = JSON.parse(localStorage.getItem('mento_messages') || '[]');
+      mento_messages.push(newMessage);
+      localStorage.setItem('mento_messages', JSON.stringify(mento_messages));
 
       // 페이지 이동
       window.location.href = 'index_2.html';
