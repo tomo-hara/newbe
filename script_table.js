@@ -43,9 +43,10 @@ document.getElementById('itemForm').addEventListener('submit', function(event) {
         <link rel="stylesheet" type="text/css" href="style.css">
       </head>
       <body>
+        <p>Date: ${getCurrentDate()}</p>
         <h1>${title}</h1>
         <p>Author: ${author}</p>
-        <p>Date: ${getCurrentDate()}</p>
+        
         <p>${content}</p>
       </body>
       </html>
