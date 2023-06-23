@@ -7,4 +7,10 @@
 <br><br>
 김하진 : 멘토 등록하기<br>
 이성민 : 메인 화면 만들기<br>
-이수경, 배문혁 : 게시판
+이수경, 배문혁 : 게시판<br>
+<br>
+index_0 : main page<br>
+index_1 : 게시판<br>
+index_2 : 찾기(전체PR)<br>
+index_3 : 멘토 등록<br>
+index_4 : 멘티 등록<br>
