@@ -13,13 +13,11 @@ document.getElementById('itemForm').addEventListener('submit', function(event) {
   // Insert cells into the new row
   var cellTitle = newRow.insertCell(0);
   var cellAuthor = newRow.insertCell(1);
-  var cellDate = newRow.insertCell(2);
-  // var cellContent = newRow.insertCell(3);
+  var cellContent = newRow.insertCell(2);
 
   // Populate cells with data
   cellTitle.textContent = title;
   cellAuthor.textContent = author;
-  cellDate.textContent = getCurrentDate();
   cellContent.textContent = content;
 
   //EventListener
@@ -59,11 +57,3 @@ document.getElementById('itemForm').addEventListener('submit', function(event) {
   document.getElementById('author').value = '';
   document.getElementById('content').value = '';
 });
-
-function getCurrentDate() {
-  var now = new Date();
-  var year = now.getFullYear();
-  var month = now.getMonth() + 1;
-  var day = now.getDate();
-  return year + '-' + month + '-' + day;
-}
