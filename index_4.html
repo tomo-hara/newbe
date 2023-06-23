@@ -74,12 +74,12 @@
       };
 
       // 로컬 스토리지에 게시글 저장
-      var messages = JSON.parse(localStorage.getItem('messages') || '[]');
-      messages.push(newMessage);
-      localStorage.setItem('messages', JSON.stringify(messages));
+      var mentee_messages = JSON.parse(localStorage.getItem('mentee_messages') || '[]');
+      mentee_messages.push(newMessage);
+      localStorage.setItem('mentee_messages', JSON.stringify(mentee_messages));
 
       // 페이지 이동
-      window.location.href = 'index_2.html';
+      window.location.href = 'index_2(mentee).html';
     });
   </script>
 </body>
