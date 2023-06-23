@@ -1,23 +1,43 @@
-io.socket.on("connection", function(socket) {
+const fs = require('fs');
+const readline = require('readline');
 
-  socket.on("newUser", function(name) {
-    console.log(name + " 님이 접속하였습니다.");
+const SIZE = 128;
+const FIFO_1 = 'fifo_1';
+const FIFO_2 = 'fifo_2';
 
-    socket.name = name;
+function receiver() {
+  const fd = fs.openSync(FIFO_2, 'r');
+  const rl = readline.createInterface({
+    input: fs.createReadStream(FIFO_2),
+  });
 
-    io.socket.emit("update", {type:"connect", name:"SERVER", message:name + "님이 접속하였습니다."});
-  
-  })
+  rl.on('line', (buffer) => {
+    console.log(`\n[USER2] ${buffer}`);
+    process.stdout.write('\n[USER1]');
+  });
+}
 
-  socket.on("message", function(data) {
-    data.name = socket.name;
-    console.log(data)
-    socket.broadcast.emit("updata", data);
-  })
+function main() {
+  fs.mkfifoSync(FIFO_1, 0o666);
+  fs.mkfifoSync(FIFO_2, 0o666);
+  const fd = fs.openSync(FIFO_1, 'w');
 
-  socket.on("disconnet", function() {
-    console.log(socket.name + "님이 나가셨습니다.");
+  const t_receiver = new Thread(receiver);
+  t_receiver.start();
 
-    socket.broadcast.emit("update", {type:"connect", name:"SERVER", message:socket.name + "님이 나가셨습니다."});
-  })
-})
+  process.stdout.write('\n[USER1]');
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  rl.on('line', (buffer) => {
+    fs.writeSync(fd, buffer);
+    if (buffer === 'quit') {
+      process.exit(0);
+    }
+  });
+}
+
+main();
