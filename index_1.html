@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <li><a href="index_0.html"></a>HUFS Mentoring</li>
+  <title>간단한 게시판</title>
+  <link rel="stylesheet" type="text/css" href="style_1.css">
 </head>
 <body>
-  <h1>게시판</h1>
+  <h1>간단한 게시판</h1>
+  <form id="post-form">
+    <input type="text" id="post-title" placeholder="제목">
+    <textarea id="post-content" placeholder="내용"></textarea>
+    <button type="submit">작성하기</button>
+  </form>
+  <div id="post-list"></div>
+
+  <script src="script_1.js"></script>
 </body>
 </html>
