@@ -16,6 +16,7 @@ a:visited {
 
 li {
   list-style: none;
+  margin-right : 1rem;
 }
 
 .container {
