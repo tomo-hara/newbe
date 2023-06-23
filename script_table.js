@@ -20,38 +20,6 @@ document.getElementById('itemForm').addEventListener('submit', function(event) {
   cellAuthor.textContent = author;
   cellContent.textContent = content;
 
-  //EventListener
-  cellTitle.addEventListener('mouseenter', function() {
-    cellTitle.style.color = 'blue';
-    cellTitle.style.fontWeight = 'bold';
-    cellTitle.style.cursor = 'pointer';
-  });
-
-  cellTitle.addEventListener('mouseleave', function() {
-    cellTitle.style.color = '';
-    cellTitle.style.fontWeight = '';
-  });
-  cellTitle.addEventListener('click', function() {
-    // Open a new page to display the full content
-    var newWindow = window.open('', '_blank');
-    newWindow.document.write(`
-      <html>
-      <head>
-        <title>${title}</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-      </head>
-      <body>
-        <p>Date: ${getCurrentDate()}</p>
-        <h1>${title}</h1>
-        <p>Author: ${author}</p>
-        
-        <p>${content}</p>
-      </body>
-      </html>
-    `);
-    newWindow.document.close();
-  });
-
   // Clear form inputs
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';

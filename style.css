@@ -71,7 +71,7 @@ header h1 button {
 }
 
 header h3 button {
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -149,8 +149,34 @@ main h2 span::after {
 
 /* 옆에 메뉴창 */
 .menu {
-  font-size: 2em;
   padding-left: 20px;
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0;
+  padding-top: 100px;
+  width: 15%;
+  background-color: lightgray;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.menu li {
+  margin-top: 30px;
+}
+
+.menu li a {
+  display: block;
+  padding: 8px 16px;
+  /* top과 bottom이 8px, left와 right가 16px */
+  text-decoration: none;
+  text-align: center;
+  font-size: 30px;
+  color: black;
+}
+
+.menu li a:hover {
+  background-color: gray;
 }
 
 .contact {
@@ -365,7 +391,7 @@ section .do-me .do-inner .content p {
 #message-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin-left:50px;
   width: 1000px;
   display: flex;
   align-items: center;
@@ -373,7 +399,7 @@ section .do-me .do-inner .content p {
 
 .message-item {
   width: calc(33.33% - 20px);
-  margin-bottom: 20px;
+  margin: 10px;
   border: 1px solid #ccc;
   padding: 10px;
 }
