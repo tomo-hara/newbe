@@ -37,32 +37,11 @@
     </ul>
     <div class="container">
       <div class="do-me">
-        <div class="do-inner">
-          <div id="message-list" style="display: flex; flex-wrap: wrap;"></div>
 
-        </div>
         <div class="do-inner">
-          <div class="icon">
-            <i class="fa-brands fa-css3-alt"></i>
-          </div>
-          <div class="content">
-            <h3>CSS3</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo culpa magni laboriosam sit excepturi
-              quibusdam
-              adipisici, vero depitis?</p>
-          </div>
+          <div id="message-list"></div>
         </div>
-        <div class="do-inner">
-          <div class="icon">
-            <i class="fa-brands fa-bootstrap"></i>
-          </div>
-          <div class="content">
-            <h3>BootStrap v5.0</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo culpa magni laboriosam sit excepturi
-              quibusdam
-              adipisici, vero depitis?</p>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
@@ -77,23 +56,21 @@
 
       // 게시글 목록 렌더링
       messages.forEach(function (message, index) {
-        var messageContainer = document.createElement('div');
-        messageContainer.style.marginRight = '10px';
-        messageContainer.style.marginBottom = '10px';
-
         var messageItem = document.createElement('div');
-        messageItem.style.display = 'flex';
-        messageItem.style.flexDirection = 'column';
+        messageItem.className = 'message-item'; // 추가: 메시지를 감싸는 div에 클래스 추가
+        messageItem.id = 'message-' + index; // 추가: 메시지 고유한 id 추가
 
-        var usernameElement = document.createElement('strong');
-        usernameElement.innerHTML = message.username;
+        var messageContent = document.createElement('div'); // 추가: 메시지 내용을 담는 div 생성
+        messageContent.innerHTML =
+          '<strong>' +
+          message.username +
+          '</strong> <br>' +
+          message.email +
+          '<br>' +
+          message.message +
+          '<br>';
 
-        var emailElement = document.createElement('div');
-        emailElement.innerHTML = message.email;
-
-        var messageElement = document.createElement('div');
-        messageElement.innerHTML = message.message;
-
+        // Create a delete button for each message
         var deleteButton = document.createElement('button');
         deleteButton.innerHTML = '삭제';
         deleteButton.addEventListener('click', function () {
@@ -105,12 +82,9 @@
           }
         });
 
-        messageItem.appendChild(usernameElement);
-        messageItem.appendChild(emailElement);
-        messageItem.appendChild(messageElement);
-        messageItem.appendChild(deleteButton);
-        messageContainer.appendChild(messageItem);
-        messageList.appendChild(messageContainer);
+        messageContent.appendChild(deleteButton); // 추가: 삭제 버튼을 메시지 내용 div에 추가
+        messageItem.appendChild(messageContent); // 수정: 메시지 내용 div를 메시지를 감싸는 div에 추가
+        messageList.appendChild(messageItem);
       });
     }
 
@@ -125,6 +99,8 @@
     // 초기 게시글 목록 렌더링
     renderMessages();
   </script>
+
+
 </body>
 
 </html>

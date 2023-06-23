@@ -221,7 +221,7 @@ section .do-me .do-inner {
   width: 30%;
   padding: 2rem;
   float: left;
-  margin-top : 5%;
+  margin-top: 5%;
   margin-right: 5%;
   cursor: pointer;
 }
@@ -243,15 +243,6 @@ section .do-me .do-inner .content h3 {
 
 section .do-me .do-inner .content p {
   font-size: 1.15rem;
-}
-
-section .do-me .do-inner:hover {
-  background-color: lightcoral;
-  color: white;
-}
-
-section .do-me .do-inner:hover i {
-  color: white;
 }
 
 @media screen and (max-width: 1140px) {
@@ -369,4 +360,20 @@ section .do-me .do-inner:hover i {
   section .title h2 {
     font-size: 3rem;
   }
+}
+
+#message-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1000px;
+  display: flex;
+  align-items: center;
+}
+
+.message-item {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
