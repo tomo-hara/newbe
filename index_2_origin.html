@@ -30,37 +30,7 @@
   <section class="mentor">
     <h1>자기 PR</h1>
   </section>
-  <section id="features" class="do">
-    <div class="container">
-      <div class="do-me">
-        <div class="do-inner">
-          <div id="message-list"></div>
-        </div>
-        <div class="do-inner">
-          <div class="icon">
-            <i class="fa-brands fa-css3-alt"></i>
-          </div>
-          <div class="content">
-            <h3>CSS3</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo culpa magni laboriosam sit excepturi
-              quibusdam
-              adipisici, vero depitis?</p>
-          </div>
-        </div>
-        <div class="do-inner">
-          <div class="icon">
-            <i class="fa-brands fa-bootstrap"></i>
-          </div>
-          <div class="content">
-            <h3>BootStrap v5.0</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo culpa magni laboriosam sit excepturi
-              quibusdam
-              adipisici, vero depitis?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div id="message-list"></div>
   <script>
     function renderMessages() {
       var messageList = document.getElementById('message-list');
@@ -75,11 +45,10 @@
         messageItem.innerHTML =
           '<strong>' +
           message.username +
-          '</strong> <br>' +
+          '</strong> (' +
           message.email +
-          '<br>' +
-          message.message +
-          '<br>' ;
+          '): ' +
+          message.message;
 
         // Create a delete button for each message
         var deleteButton = document.createElement('button');
@@ -109,6 +78,45 @@
     // 초기 게시글 목록 렌더링
     renderMessages();
   </script>
+  <section id="features" class="do">
+    <div class="container">
+      <div class="do-me">
+        <div class="do-inner">
+          <div class="icon">
+            <i class="fa-brands fa-html5"></i>
+          </div>
+          <div class="content">
+            <h3>HTML5</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo culpa magni laboriosam sit excepturi
+              quibusdam
+              adipisici, vero depitis?</p>
+          </div>
+        </div>
+        <div class="do-inner">
+          <div class="icon">
+            <i class="fa-brands fa-css3-alt"></i>
+          </div>
+          <div class="content">
+            <h3>CSS3</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo culpa magni laboriosam sit excepturi
+              quibusdam
+              adipisici, vero depitis?</p>
+          </div>
+        </div>
+        <div class="do-inner">
+          <div class="icon">
+            <i class="fa-brands fa-bootstrap"></i>
+          </div>
+          <div class="content">
+            <h3>BootStrap v5.0</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo culpa magni laboriosam sit excepturi
+              quibusdam
+              adipisici, vero depitis?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>

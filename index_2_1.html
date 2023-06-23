@@ -34,6 +34,9 @@
     <div class="container">
       <div class="do-me">
         <div class="do-inner">
+          <div class="icon">
+            <i class="fa-brands fa-html5"></i>
+          </div>
           <div id="message-list"></div>
         </div>
         <div class="do-inner">
@@ -75,11 +78,10 @@
         messageItem.innerHTML =
           '<strong>' +
           message.username +
-          '</strong> <br>' +
+          '</strong> (' +
           message.email +
-          '<br>' +
-          message.message +
-          '<br>' ;
+          '): ' +
+          message.message;
 
         // Create a delete button for each message
         var deleteButton = document.createElement('button');
