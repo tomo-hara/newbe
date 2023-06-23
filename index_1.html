@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <li><a href="index.html"></a>HUFS Mentoring</li>
-  <title>간단한 게시판</title>
-  <link rel="stylesheet" type="text/css" href="style_1.css">
-</head>
-<body>
-  <h1>간단한 게시판</h1>
-  <form id="post-form">
-    <input type="text" id="post-title" placeholder="제목">
-    <textarea id="post-content" placeholder="내용"></textarea>
-    <button type="submit">작성하기</button>
-  </form>
-  <div id="post-list"></div>
+  <head>
+    <title>게시글 작성</title>
+    <style>
+      #message-form {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <h1 style="margin: 10px;">HUFS Mentoring</h1>
+      </a>
+    </header>
 
-  <script src="script_1.js"></script>
-</body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 40vh;">
+      <div style="text-align: center;">
+        <h1 style="margin: 10px;">게시글 작성</h1>
+        <form id="message-form">
+          <input type="text" id="username-input" placeholder="사용자명" required><br>
+          <input type="email" id="email-input" placeholder="이메일" required><br>
+          <textarea id="message-input" placeholder="본문" required></textarea><br>
+          <input type="password" id="password-input" placeholder="비밀번호" required><br>
+          <button type="submit">작성</button>
+        </form>
+      </div>
+    </div>
+    
+    <script>
+      // 게시글 작성 폼 제출 시 처리
+      document.getElementById('message-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // 폼 제출 동작 중지
+
+        // 입력값 가져오기
+        var username = document.getElementById('username-input').value;
+        var email = document.getElementById('email-input').value;
+        var message = document.getElementById('message-input').value;
+        var password = document.getElementById('password-input').value;
+
+        // 게시글 생성
+        var newMessage = {
+          username: username,
+          email: email,
+          message: message,
+          password: password
+        };
+
+        // 로컬 스토리지에 게시글 저장
+        var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+        messages.push(newMessage);
+        localStorage.setItem('messages', JSON.stringify(messages));
+
+        // 페이지 이동
+        window.location.href = 'board.html';
+      });
+    </script>
+  </body>
 </html>
