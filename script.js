@@ -1,57 +1,26 @@
-(function() {
-  const spanEl = document.querySelector("main h2 span");
-  const txtArr = ["Web Publisher", "Front-End Developer", "Web UI Designer", "UX Designer", "Back-End Developer"];
-  let index = 0;
-  let currentTxt = txtArr[index].split("");
+// 게시글 작성 폼 제출 시 처리
+document.getElementById('message-form').addEventListener('submit', function (event) {
+  event.preventDefault(); // 폼 제출 동작 중지
 
-  function writeTxt() {
-    spanEl.textContent += currentTxt.shift();
-    if (currentTxt.length != 0) {
-      setTimeout(writeTxt, Math.floor(Math.random() * 100));
-    }else {
-      currentTxt = spanEl.textContent.split("");
-      setTimeout(deleteTxt, 3000);
-    }
-  }
-  writeTxt();
+  // 입력값 가져오기
+  var username = document.getElementById('username-input').value;
+  var email = document.getElementById('email-input').value;
+  var message = document.getElementById('message-input').value;
+  var password = document.getElementById('password-input').value;
 
-  function deleteTxt() {
-    currentTxt.pop();
-    spanEl.textContent = currentTxt.join("");
-    if (currentTxt.length != 0) {
-      setTimeout(deleteTxt, Math.floor(Math.random() * 100));
-    }else {
-      index = (index + 1) % txtArr.length;
-      currentTxt = txtArr[index].split("");
-      writeTxt()
-    }
-  }
-})();
+  // 게시글 생성
+  var newMessage = {
+    username: username,
+    email: email,
+    message: message,
+    password: password
+  };
 
-const headerEl = document.querySelector("header");
-window.addEventListener("scroll", function() {
-  this.requestAnimationFrame(scrollCheck);
+  // 로컬 스토리지에 게시글 저장
+  var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+  messages.push(newMessage);
+  localStorage.setItem('messages', JSON.stringify(messages));
+
+  // 페이지 이동
+  window.location.href = 'board.html';
 });
-function scrollCheck() {
-  const browerScrollY = window.scrollY;
-  if(browerScrollY > 0) {
-    headerEl.classList.add("active");
-  }else {
-    headerEl.classList.remove("active");
-  }
-}
-
-const animationMove = function(selector) {
-  const targetEl = document.querySelector(selector);
-  const browserScrollY = window.scrollY;
-  const targetScrollY = targetEl.getBoundingClientRect().top + browserScrollY;
-  window.scrollTo({top:targetScrollY, behavior:"smooth"})
-};
-
-const scollMoveEl = document.querySelectorAll("[data-animation-scroll='true']");
-for (let i=0; i<scollMoveEl.length; i++) {
-  scollMoveEl[i].addEventListener("click", function(e) {
-    const target = this.dataset.target;
-    animationMove(target);
-  });
-}
