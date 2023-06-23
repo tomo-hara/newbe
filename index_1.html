@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
   <head>
     <title>게시글 작성</title>
@@ -57,4 +58,82 @@
       });
     </script>
   </body>
+=======
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간단한 게시판</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h3>
+        <button onclick="location.href='index.html'">MAIN</button>
+      </h3>
+      <nav>
+        <ul>
+          <li><a href="index_3.html">멘토 등록</a></li>
+          <li>|</li>
+          <li><a href="index_4.html">멘티 등록</a></li>
+        </ul>
+      </nav>
+  </header>
+  <section class="mentor">
+    <h1>게시판</h1>
+  </section>
+  <div id="message-list"></div>
+  <script>
+    function renderMessages() {
+        var messageList = document.getElementById('message-list');
+        messageList.innerHTML = '';
+
+        // 로컬 스토리지에서 게시글 가져오기
+        var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+
+        // 게시글 목록 렌더링
+        messages.forEach(function (message, index) {
+          var messageItem = document.createElement('div');
+          messageItem.innerHTML =
+            '<strong>' +
+            message.username +
+            '</strong> (' +
+            message.email +
+            '): ' +
+            message.message;
+
+          // Create a delete button for each message
+          var deleteButton = document.createElement('button');
+          deleteButton.innerHTML = '삭제';
+          deleteButton.addEventListener('click', function () {
+            var passwordInput = prompt('비밀번호를 입력하세요:');
+            if (passwordInput === message.password) {
+              deleteMessage(index);
+            } else {
+              alert('비밀번호가 일치하지 않습니다.');
+            }
+          });
+
+          messageItem.appendChild(deleteButton);
+          messageList.appendChild(messageItem);
+        });
+      }
+
+      // 메시지 삭제
+      function deleteMessage(index) {
+        var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+        messages.splice(index, 1);
+        localStorage.setItem('messages', JSON.stringify(messages));
+        renderMessages();
+      }
+
+      // 초기 게시글 목록 렌더링
+      renderMessages();
+  </script>
+</body>
+>>>>>>> 08f35083424c84cedd3b6683e2f71f7cf24536e8
 </html>
