@@ -141,6 +141,12 @@ main h2 span::after {
   font-size : 2rem;
 }
 
+.contact {
+  display : flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:30px;
+}
 section.contact .right {
   width:65%;
   margin : 5 auto;
