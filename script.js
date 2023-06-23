@@ -22,7 +22,7 @@ document.getElementById('message-form').addEventListener('submit', function (eve
   localStorage.setItem('messages', JSON.stringify(messages));
 
   // 페이지 이동
-  window.location.href = 'index1.html';
+  window.location.href = 'index_1.html';
 });
 
 function renderMessages() {

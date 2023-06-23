@@ -141,16 +141,11 @@ main h2 span::after {
   font-size : 2rem;
 }
 
-section.contact .contact-me::after {
-  content:"";
-  display:block;
-  clear:both;
-}
-section.contact .contact-me .right {
+section.contact .right {
   width:65%;
-  margin : 0 auto;
+  margin : 5 auto;
 }
-section.contact .contact-me .right {
+section.contact .right {
   float:left;
   width:65%;
   margin-left:5%;
@@ -159,37 +154,37 @@ section.contact .contact-me .right {
   padding:1rem;
 }
 
-section.contact .contact-me .right .form-group {
+section.contact .right .form-group {
   margin-bottom:1.25rem;
 }
-section.contact .contact-me .right .form-group label {
+section.contact .right .form-group label {
   display:block;
   margin-bottom:0.85rem;
 }
-section.contact .contact-me .right .form-group input {
+section.contact .right .form-group input {
   padding:0.625rem;
   width:100%;
   outline:none;
   border:1px solid #ccc;
   border-radius:10px;
 }
-section.contact .contact-me .right .form-group input:focus {
+section.contact .right .form-group input:focus {
   border:1px solid #719ECE;
   box-shadow: 0 0 10px #719ECE;
 }
-section.contact .contact-me .right .form-group textarea {
+section.contact .right .form-group textarea {
   height:300px;
   width:100%;
   resize:none;
   border:1px solid #ccc;
   border-radius:10px;
 }
-section.contact .contact-me .right .form-group textarea:focus {
+section.contact .right .form-group textarea:focus {
   outline:none;
   border:1px solid #719ECE;
   box-shadow: 0 0 10px #719ECE;
 }
-section.contact .contact-me .right button {
+section.contact .right button {
   width:100%;
   padding:1rem;
   background-color: #f78b00;
