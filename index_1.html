@@ -1,25 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<<<<<<< HEAD
-  <li><a href="index_0.html"></a>HUFS Mentoring</li>
-  <title>간단한 게시판</title>
-  <link rel="stylesheet" type="text/css" href="style_1.css">
-</head>
-<body>
-  <h1>간단한 게시판</h1>
-  <form id="post-form">
-    <input type="text" id="post-title" placeholder="제목">
-    <textarea id="post-content" placeholder="내용"></textarea>
-    <button type="submit">작성하기</button>
-  </form>
-  <div id="post-list"></div>
-
-  <script src="script_1.js"></script>
-=======
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>게시판</title>
+  <title>간단한 게시판</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -28,30 +12,67 @@
 <body>
   <header>
     <div class="container">
-      <h1>
-        <button>MAIN</button>
-      </h1>
+      <h3>
+        <button onclick="location.href='index.html'">MAIN</button>
+      </h3>
       <nav>
         <ul>
           <li><a href="index_3.html">멘토 등록</a></li>
           <li>|</li>
-          <li><a href="index_4.html">멘토 등록</a></li>
+          <li><a href="index_4.html">멘티 등록</a></li>
         </ul>
       </nav>
   </header>
-  <section>
-    <h1>게시글 작성</h1>
-    
-    <form id="message-form">
-      <input type="text" id="username-input" placeholder="사용자명" required><br>
-      <input type="email" id="email-input" placeholder="이메일" required><br>
-      <textarea id="message-input" placeholder="본문" required></textarea><br>
-      <input type="password" id="password-input" placeholder="비밀번호" required><br>
-      <button type="submit">작성</button>
-    </form>
-    
-    <script src="script.js"></script>
+  <section class="mentor">
+    <h1>게시판</h1>
   </section>
->>>>>>> 94b397c90808fc5aa3d3ae8d8e2b06757f3bb894
+  <div id="message-list"></div>
+  <script>
+    function renderMessages() {
+        var messageList = document.getElementById('message-list');
+        messageList.innerHTML = '';
+
+        // 로컬 스토리지에서 게시글 가져오기
+        var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+
+        // 게시글 목록 렌더링
+        messages.forEach(function (message, index) {
+          var messageItem = document.createElement('div');
+          messageItem.innerHTML =
+            '<strong>' +
+            message.username +
+            '</strong> (' +
+            message.email +
+            '): ' +
+            message.message;
+
+          // Create a delete button for each message
+          var deleteButton = document.createElement('button');
+          deleteButton.innerHTML = '삭제';
+          deleteButton.addEventListener('click', function () {
+            var passwordInput = prompt('비밀번호를 입력하세요:');
+            if (passwordInput === message.password) {
+              deleteMessage(index);
+            } else {
+              alert('비밀번호가 일치하지 않습니다.');
+            }
+          });
+
+          messageItem.appendChild(deleteButton);
+          messageList.appendChild(messageItem);
+        });
+      }
+
+      // 메시지 삭제
+      function deleteMessage(index) {
+        var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+        messages.splice(index, 1);
+        localStorage.setItem('messages', JSON.stringify(messages));
+        renderMessages();
+      }
+
+      // 초기 게시글 목록 렌더링
+      renderMessages();
+  </script>
 </body>
 </html>
