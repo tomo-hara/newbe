@@ -24,9 +24,20 @@ li {
   margin: 0 auto;
 }
 
-header {
+.header {
   position: fixed;
   color: white;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  padding: 1rem;
+}
+
+.header button {
+  color : white;
+}
+
+header {
   top: 0;
   z-index: 1;
   width: 100%;
@@ -52,7 +63,7 @@ header button {
   background: transparent;
   border: 0;
   cursor: pointer;
-  color: white;
+  color: black;
 }
 
 header h1 button {
@@ -60,24 +71,9 @@ header h1 button {
   font-weight: bold;
 }
 
-header nav ul li button {
-  font-size: 1.2rem;
-  color: white;
-}
-
-header.active {
-  background-color: rgba(0, 0, 0);
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+header h3 button {
+  font-size: 1.7rem;
+  font-weight: bold;
 }
 
 main {
@@ -121,33 +117,6 @@ main button.download {
   cursor: pointer;
 }
 
-main button.mouse {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: upDown 1s ease-in-out infinite;
-  cursor: pointer;
-}
-
-@keyframes upDown {
-  0% {
-    bottom: 1rem;
-  }
-
-  50% {
-    bottom: 1.5rem;
-  }
-
-  100% {
-    bottom: 1rem;
-  }
-}
-
 main h2 span::after {
   content: "";
   height: 40px;
@@ -166,6 +135,74 @@ main h2 span::after {
     opacity: 0;
   }
 }
+
+.mentor h1 {
+  text-align : center;
+  font-size : 2rem;
+}
+
+section.contact .contact-me::after {
+  content:"";
+  display:block;
+  clear:both;
+}
+section.contact .contact-me .right {
+  width:65%;
+  margin : 0 auto;
+}
+section.contact .contact-me .right {
+  float:left;
+  width:65%;
+  margin-left:5%;
+  margin-bottom:2rem;
+  border:1px solid #ccc;
+  padding:1rem;
+}
+
+section.contact .contact-me .right .form-group {
+  margin-bottom:1.25rem;
+}
+section.contact .contact-me .right .form-group label {
+  display:block;
+  margin-bottom:0.85rem;
+}
+section.contact .contact-me .right .form-group input {
+  padding:0.625rem;
+  width:100%;
+  outline:none;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+section.contact .contact-me .right .form-group input:focus {
+  border:1px solid #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+section.contact .contact-me .right .form-group textarea {
+  height:300px;
+  width:100%;
+  resize:none;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+section.contact .contact-me .right .form-group textarea:focus {
+  outline:none;
+  border:1px solid #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+section.contact .contact-me .right button {
+  width:100%;
+  padding:1rem;
+  background-color: #f78b00;
+  border:none;
+  color:white;
+}
+
+
+
+
+
+
+
 
 @media screen and (max-width:1140px) {
   main .container {
