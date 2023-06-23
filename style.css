@@ -144,13 +144,14 @@ main h2 span::after {
 }
 
 .board_button {
-  margin-right:10%;
-  float : right;
+  margin-right: 10%;
+  float: right;
 }
 
 /* 옆에 메뉴창 */
 .menu {
-  font-size : 3rem;
+  font-size: 2em;
+  padding-left: 20px;
 }
 
 .contact {
