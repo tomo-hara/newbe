@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>게시글 작성</title>
+    <style>
+      #message-form {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>게시글 작성</h1>
+
+    <form id="message-form">
+      <input type="text" id="username-input" placeholder="사용자명" required>
+      <textarea id="message-input" placeholder="게시글 내용" required></textarea>
+      <button type="submit">작성</button>
+    </form>
+
+    <div id="message-list"></div>
+
+    <script>
+      // 게시글 작성 폼 제출 시 처리
+      document.getElementById('message-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // 폼 제출 동작 중지
+
+        // 입력값 가져오기
+        var username = document.getElementById('username-input').value;
+        var message = document.getElementById('message-input').value;
+
+        // 게시글 생성
+        var newMessage = {
+          username: username,
+          message: message
+        };
+
+        // 로컬 스토리지에 게시글 저장
+        var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+        messages.push(newMessage);
+        localStorage.setItem('messages', JSON.stringify(messages));
+
+        // 게시글 목록 갱신
+        renderMessages();
+      });
+
+      // 게시글 목록 렌더링
+      function renderMessages() {
+        var messageList = document.getElementById('message-list');
+        messageList.innerHTML = '';
+
+        // 로컬 스토리지에서 게시글 가져오기
+        var messages = JSON.parse(localStorage.getItem('messages') || '[]');
+
+        // 게시글 목록 렌더링
+        messages.forEach(function (message) {
+          var messageItem = document.createElement('div');
+          messageItem.innerHTML = '<strong>' + message.username + '</strong>: ' + message.message;
+          messageList.appendChild(messageItem);
+        });
+      }
+
+      // 초기 게시글 목록 렌더링
+      renderMessages();
+    </script>
+  </body>
+</html>
