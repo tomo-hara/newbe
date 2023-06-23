@@ -143,6 +143,16 @@ main h2 span::after {
   font-size: 2rem;
 }
 
+.board_button {
+  margin-right:10%;
+  float : right;
+}
+
+/* 옆에 메뉴창 */
+.menu {
+  font-size : 3rem;
+}
+
 .contact {
   display: flex;
   justify-content: center;

@@ -26,7 +26,7 @@ document.getElementById('itemForm').addEventListener('submit', function(event) {
   cellTitle.addEventListener('mouseenter', function() {
     cellTitle.style.color = 'blue';
     cellTitle.style.fontWeight = 'bold';
-     cellTitle.style.cursor = 'pointer';
+    cellTitle.style.cursor = 'pointer';
   });
 
   cellTitle.addEventListener('mouseleave', function() {

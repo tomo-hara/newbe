@@ -38,7 +38,8 @@
     <div class="container">
       <div class="do-me">
         <div class="do-inner">
-          <div id="message-list"></div>
+          <div id="message-list" style="display: flex; flex-wrap: wrap;"></div>
+
         </div>
         <div class="do-inner">
           <div class="icon">
@@ -76,17 +77,23 @@
 
       // 게시글 목록 렌더링
       messages.forEach(function (message, index) {
-        var messageItem = document.createElement('div');
-        messageItem.innerHTML =
-          '<strong>' +
-          message.username +
-          '</strong> <br>' +
-          message.email +
-          '<br>' +
-          message.message +
-          '<br>' ;
+        var messageContainer = document.createElement('div');
+        messageContainer.style.marginRight = '10px';
+        messageContainer.style.marginBottom = '10px';
 
-        // Create a delete button for each message
+        var messageItem = document.createElement('div');
+        messageItem.style.display = 'flex';
+        messageItem.style.flexDirection = 'column';
+
+        var usernameElement = document.createElement('strong');
+        usernameElement.innerHTML = message.username;
+
+        var emailElement = document.createElement('div');
+        emailElement.innerHTML = message.email;
+
+        var messageElement = document.createElement('div');
+        messageElement.innerHTML = message.message;
+
         var deleteButton = document.createElement('button');
         deleteButton.innerHTML = '삭제';
         deleteButton.addEventListener('click', function () {
@@ -98,8 +105,12 @@
           }
         });
 
+        messageItem.appendChild(usernameElement);
+        messageItem.appendChild(emailElement);
+        messageItem.appendChild(messageElement);
         messageItem.appendChild(deleteButton);
-        messageList.appendChild(messageItem);
+        messageContainer.appendChild(messageItem);
+        messageList.appendChild(messageContainer);
       });
     }
 
